@@ -1,0 +1,11 @@
+<div class="list-group list-group-light">
+
+{% for brand in brands %}
+    <a href="{% url 'by_brand' brand.id %}"
+       class="list-group-item list-group-item-action px-3 border-0 fs-5"
+       data-mdb-ripple-init>
+      {{ brand.name }}
+    </a>
+
+{% endfor %}
+  </div>

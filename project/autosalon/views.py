@@ -9,6 +9,7 @@ def home(request):
     context = {
         'brands': brands,
         'cars': cars,
+        "title": "Asosiy menu",
     }
 
     return render(request, 'autosalon/index.html', context)
@@ -20,6 +21,7 @@ def brand_by_car(request, brand_id: int):
     context = {
         'brands': brands,
         'cars': cars,
+        "title": Brand.objects.get(pk=brand_id).name
     }
 
 
@@ -33,6 +35,7 @@ def car_detail(request, pk: int):
     context = {
         'car': car,
         'brands': brands,
+
     }
 
     return render(request, 'autosalon/detail.html', context)

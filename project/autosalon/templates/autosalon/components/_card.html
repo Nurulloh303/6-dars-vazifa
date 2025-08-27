@@ -1,0 +1,17 @@
+        {% if car.image %}
+          <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}" style="height:400px; object-fit:cover;"/>
+        {% endif %}
+        <div class="card-body">
+
+          <h3 class="card-title">{{ car.title }}</h3>
+
+          <p class="card-text">{{ car.description }}</p>
+
+          <p><b>Brand:</b> {{ car.brand.name }}</p>
+
+          <p><b>Created:</b> {{ car.created }}</p>
+
+        </div>
+        <div class="card-footer">
+          <a href="/" class="btn btn-primary">⬅ Back to list</a>
+        </div>

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+      {%block title%}
+      AutoSalon
+      {%endblock title%}
+    </title>
+
+
+  {%include 'components/_styles.html'%}
+
+</head>
+<body>
+
+<div class="container">
+
+  {%include 'components/_header.html'%}
+
+
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      {%block content%}
+      {%endblock content%}
+    </div>
+  </div>
+
+  {%include "components/_footer.html"%}
+
+</div>
+
+
+{%include 'components/_scripts.html'%}
+
+</body>
+</html>
