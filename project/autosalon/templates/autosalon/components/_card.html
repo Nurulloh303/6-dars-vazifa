@@ -1,17 +1,30 @@
-        {% if car.image %}
-          <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}" style="height:400px; object-fit:cover;"/>
-        {% endif %}
-        <div class="card-body">
+<div class="col">
+    <div class="card h-100">
 
-          <h3 class="card-title">{{ car.title }}</h3>
+                            {% if car.image %}
+                            <img src="{{ car.image.url }}" class="card-img-top"
+                                 alt="Skyscrapers"/>
+                            {% else %}
+                            <img src="https://demofree.sirv.com/nope-not-here.jpg" class="card-img-top"
+                                 alt="Skyscrapers"/>
+                            {% endif %}
 
-          <p class="card-text">{{ car.description }}</p>
+                            <div class="card-body">
 
-          <p><b>Brand:</b> {{ car.brand.name }}</p>
+                                <a href="{% url 'by_car' car.pk %}">
+                                <h5 class="card-title">{{ car.title }}</h5>
+                                </a>
 
-          <p><b>Created:</b> {{ car.created }}</p>
-
-        </div>
-        <div class="card-footer">
-          <a href="/" class="btn btn-primary">⬅ Back to list</a>
-        </div>
+                                <p class="card-text">
+                                    {% if 'car' in request.path %}
+                                    {{ car.description|linebreaks }}
+                                    {% else %}
+                                    {{ car.description|truncatewords:10 }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">{{ car.created }}</small>
+                            </div>
+                        </div>
+</div>

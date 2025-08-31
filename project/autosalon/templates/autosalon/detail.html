@@ -1,22 +1,32 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
 
-{%block title%}
-{{title}}
-{%endblock title%}
+{% block title %}
+{{ title }}
+{% endblock title %}
 
 
-
-{%block content%}
-      <div class="col-3">
-        {%include 'autosalon/components/_list_group.html'%}
-      </div>
-
-    <!-- Right: Car detail -->
-    <div class="col-8">
-      <div class="card">
-        {%include 'autosalon/components/_card.html'%}
-      </div>
+{% block content %}
+    <div class="col-3">
+        {% include 'autosalon/components/_list_group.html' %}
     </div>
-{%block content%}
+    <div class="col-8">
+        {% include 'autosalon/components/_card.html' %}
+
+
+    </div>
+
+{% endblock content %}
+
+{% block comment %}
+<form action="{% url 'save_comment' car.pk %}" method="post" style="margin-bottom: 20px; text-align: center;">
+    {% csrf_token %}
+
+    {{  form }}
+
+    <button type="submit">Save</button>
+
+</form>
+{% endblock comment %}
+
 

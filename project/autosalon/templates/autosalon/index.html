@@ -1,22 +1,20 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
 
-{%block title%}
-{{block.super}}: {{title}}
-{%endblock title%}
+{% block title %}
+{{ block.super }}: {{ title }}
+{% endblock title %}
 
 
-{%block content%}
-      <div class="col-3">
-        {%include 'autosalon/components/_list_group.html'%}
-      </div>
-      <div class="col-8">
-
-        {% for car in cars %}
-        {%include 'autosalon/components/_card.html'%}
-        {%endfor%}
-
-      </div>
-
-
-{%endblock content%}
+{% block content %}
+    <div class="col-3">
+        {% include 'autosalon/components/_list_group.html' %}
+    </div>
+    <div class="col-8">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                  {% for car in cars %}
+                    {% include 'autosalon/components/_card.html' %}
+                  {% endfor %}
+                </div>
+    </div>
+{% endblock content %}

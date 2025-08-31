@@ -1,6 +1,7 @@
-from django.shortcuts import render
-
-from .models import Brand, Car
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
+from .forms import CommentForm
+from .models import Brand, Car, Comment
 
 def home(request):
     brands = Brand.objects.all()
@@ -35,7 +36,18 @@ def car_detail(request, pk: int):
     context = {
         'car': car,
         'brands': brands,
-
+        "form": CommentForm()
     }
 
     return render(request, 'autosalon/detail.html', context)
+
+def save_comment(request: HttpRequest, car_id: int):
+    if request.method == "POST":
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            Comment.objects.create(
+                text=request.POST.get("text"),
+                car_id=car_id,
+                user=request.user
+            )
+    return redirect("by_car", pk=car_id)
